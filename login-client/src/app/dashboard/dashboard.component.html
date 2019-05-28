@@ -1,3 +1,36 @@
 <div class="container">
-    <p>Dashboard table goes here</p>
+    <p>All the songs in our hub:</p>
+    <div class="container">
+        <table class="table">
+          <thead>
+            <th>Artist</th>
+            <th>Title</th>
+            <th>No. of Times Song Has Been Added</th>
+            <th>Add to Playlist</th>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Song artist</td>
+                  <td>Song title</td>
+                  <td># song adds</td>
+                  <td>Button to add to playlist</td>
+              </tr>
+            <!-- <tr *ngFor="let song of songs">
+              <td>{{ task?.pk }}</td>
+              <td>{{ task?.fields.title }}</td>
+              <td></td>
+              <td [ngClass]="{'done':task.fields.completed === true}" *ngIf="task.fields.completed == true">Done</td>
+              <td [ngClass]="{'open':task.completed === false}" *ngIf="task.fields.completed == false">Not Yet</td>
+              <td>{{ task?.fields.assigned.length}}</td>
+              <td>
+                <span><a [routerLink]="task.pk">View</a> | </span>
+                <span><a href="#">Edit</a> | </span>
+                <button class="btn btn-secondary" (click)="deleteTask(task.pk)">Delete</button>
+              </td>
+            </tr> -->
+          </tbody>
+        </table>
+
+        <hr>
+      </div>
 </div>
