@@ -11,7 +11,9 @@ export class SongService {
   baseURL = 'https://localhost:800/song'
   constructor(private http:HttpClient, private route:Router) { }
 
-  addSong(){}
+  addSong(song): Observable<Song>{
+    return this.http.post<Song>(this.baseURL+'/create/',song)
+  }
 
   getOneSong(user_id): Observable<Song>{
     return this.http.get<Song>(this.baseURL + '/'+user_id);
