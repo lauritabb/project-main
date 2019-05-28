@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="container">
+  <h2>### Name's ### Playlist</h2>
+  <table class="table">
+      <thead>
+        <th>Artist</th>
+        <th>Title</th>
+        <th>Times added to Playlist</th>
+      </thead>
+      <tbody>
+          <tr>
+              <td>Song artist</td>
+              <td>Song title</td>
+              <td># song adds</td>
+          <!-- </tr>
+        <tr *ngFor="let song of songs">
+          <td>{{ song.fields.artist }}</td>
+          <td>{{ song.fields.title }}</td>
+          <td class="text-center">{{ song.fields.playlist.length }}</td>
+         <td>{{ song?.fields.playlist.length}}</td>
+          <td>
+            <button class="btn btn-secondary" (click)="addToPlaylist(song.pk)">Add to playlist</button>
+          </td>
+        </tr> -->
+      </tbody>
+    </table>
+</div>
