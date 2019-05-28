@@ -14,9 +14,10 @@ def show(request,id):
 
 def create(request):
     # decode post data
-    # data = json.loads(request.body.decode())
-    # errors = User.objects.validate(data)
-    # print(errors)
+    data = json.loads(request.body.decode())
+    valid, result = Song.objects.validate(data)
+    print("*"*50)
+    print("valid: ", valid)
     # if errors:
     #     return HttpResponse(json.dumps(errors), status=400, content_type="application/json")
     # # create a user, return user info as jason

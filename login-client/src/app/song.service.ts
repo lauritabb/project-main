@@ -13,8 +13,7 @@ export class SongService {
 
   addSong(song): Observable<Song>{
     console.log("we are in add Song ")
-    return song
-    // return this.http.post<Song>(this.baseURL+'/create/',song)
+    return this.http.post<Song>(this.baseURL+'/create/',song)
   }
 
   getOneSong(user_id): Observable<Song>{
