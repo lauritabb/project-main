@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./song-new.component.css']
 })
 export class SongNewComponent implements OnInit {
-
+ createForm: object ={
+    title:'',
+    artist:'',
+  }
   constructor() { }
 
   ngOnInit() {
