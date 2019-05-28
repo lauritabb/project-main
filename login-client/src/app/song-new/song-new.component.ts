@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
+import { SongService } from '../song.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-song-new',
@@ -10,7 +13,7 @@ export class SongNewComponent implements OnInit {
     title:'',
     artist:'',
   }
-  constructor() { }
+  constructor(private httpService:HttpService, private songService:SongService) { }
 
   ngOnInit() {
   }
