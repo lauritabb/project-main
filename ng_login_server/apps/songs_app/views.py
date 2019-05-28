@@ -14,7 +14,7 @@ def show(request,id):
 
 def create(request):
     # decode post data
-    data = json.loads(request.body.decode())
+    # data = json.loads(request.body.decode())
     # errors = User.objects.validate(data)
     # print(errors)
     # if errors:
