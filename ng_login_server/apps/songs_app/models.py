@@ -1,5 +1,5 @@
 from django.db import models
-from .models import User
+from apps.log_reg.models import User
 
 class Song(models.Model):
     title = models.CharField(max_length=255)
