@@ -8,11 +8,13 @@ import { Song } from './song'
   providedIn: 'root'
 })
 export class SongService {
-  baseURL = 'https://localhost:8000/songs'
+  baseURL = 'http://localhost:8000/songs'
   constructor(private http:HttpClient, private route:Router) { }
 
   addSong(song): Observable<Song>{
-    return this.http.post<Song>(this.baseURL+'/create/',song)
+    console.log("we are in add Song ")
+    return song
+    // return this.http.post<Song>(this.baseURL+'/create/',song)
   }
 
   getOneSong(user_id): Observable<Song>{
