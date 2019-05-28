@@ -7,12 +7,12 @@ import json
 def index(request):
     # testQuery = User.objects.all()
     # data = serializers.serialize("json", testQuery, indent=2, use_natural_foreign_keys=True)
-    data = serializers.serialize("json", User.objects.all(), indent=2)
+    data = serializers.serialize("json", User.objects.all(), indent=2, use_natural_foreign_keys=True)
     return HttpResponse(data, content_type="application/json")
 
 
 def show(request,id):
-    data = serializers.serialize("json", User.objects.filter(id=id), indent=2)
+    data = serializers.serialize("json", User.objects.filter(id=id), indent=2, use_natural_foreign_keys=True)
     print("hello")
     return HttpResponse(data, status=200,content_type="application/json")
 

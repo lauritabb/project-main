@@ -7,12 +7,9 @@ import json
 def index(request):
     data = serializers.serialize("json", Song.objects.all(), indent=2)
     return HttpResponse(data, content_type="application/json")
-    # return HttpResponse("we are in index of songs")
-
 
 def show(request,id):
-    # data = serializers.serialize("json", User.objects.filter(id=id), indent=2)
-    # print("hello")
+    # data = serializers.serialize("json", Song.objects.filter(id=id), indent=2)
     # return HttpResponse(data, status=200,content_type="application/json")
     return HttpResponse("we are in show of songs")
 
