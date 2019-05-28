@@ -6,7 +6,7 @@
         <input type="text" name="title" class="form-control" id="name" aria-describedby="emailHelp" 
         required
         minlength="3"
-        [(ngModel)]="Song.title"
+        [(ngModel)]="newSong.title"
         [ngModelOptions]="{updateOn: 'blur'}"
         #titleSong ="ngModel">
         <p>{{newSong.title}}</p>
@@ -17,7 +17,7 @@
         <input type="text" name="artist" class="form-control" id="exampleInputPassword1" 
         required
         minlength="3"
-        [(ngModel)]="Song.artist"
+        [(ngModel)]="newSong.artist"
         [ngModelOptions]="{updateOn: 'blur'}"
         #artistSong ="ngModel">
         <div *ngIf="!artistSong.valid && (artistSong.dirty || artistSong.touched)" class="text-errors"> Error, input valid value</div>
