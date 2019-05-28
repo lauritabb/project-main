@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.core import serializers
 # from .models import User
+from .models import Song
 import json
 
 def index(request):
-    # data = serializers.serialize("json", User.objects.all(), indent=2)
-    # return HttpResponse(data, content_type="application/json")
-    return HttpResponse("we are in index of songs")
+    data = serializers.serialize("json", Song.objects.all(), indent=2)
+    return HttpResponse(data, content_type="application/json")
+    # return HttpResponse("we are in index of songs")
 
 
 def show(request,id):
