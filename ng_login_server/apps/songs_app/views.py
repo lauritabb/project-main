@@ -11,6 +11,7 @@ def index(request):
     return HttpResponse(data, content_type="application/json")
 
 def show(request,id):
+    #show count playlist and song for show-song
     song = Song.objects.get(id=id)
     # print("*"*50)
     # print("test", test)
@@ -24,9 +25,8 @@ def show(request,id):
     # print("data:", data)
     return HttpResponse(json.dumps(result), status=200,content_type="application/json")
 
-def showCount(request,person_id):
-    print("We are in showCount")
-    # Count.objects.filter
+def showUser(request,id):
+    print("we are in showUser")
     pass
 
 def create(request):

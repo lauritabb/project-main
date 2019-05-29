@@ -6,5 +6,6 @@ urlpatterns = [
     path('<int:id>/', views.show),
     path('create/',views.create),
     path('playlist/',views.addPlaylist),
-    path('count/<int:person_id>',views.showCount),
+    # path('count/<int:person_id>',views.showCount),
+    path('users/<int:id>',views.showUser),
 ]

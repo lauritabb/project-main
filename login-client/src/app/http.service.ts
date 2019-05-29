@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class HttpService {
-  // baseURL = 'https://localhost:8000/api/login-client/';
   baseURL = 'http://localhost:8000'
 
   constructor(private _http: HttpClient, private router:Router) { 
