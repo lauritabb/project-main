@@ -33,18 +33,18 @@ class Song(models.Model):
     playlist = models.ManyToManyField(User,related_name="songs") #foreign key into users table
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    total_times_added = models.IntegerField() #increments total no. times a song is "liked"
+    total_times_added = models.IntegerField(default=0) #increments total no. times a song is "liked"
 
     objects = SongManager()
 
     def natural_key(self):
-        return(f'{self.title} {self.artist} {self.playlist}')
+        return(f'{self.title} {self.artist} {self.playlist} {self.total_times_added}')
 
 class Count(models.Model):
     usercount = models.ForeignKey(User, related_name="usercount", on_delete=models.CASCADE)
-    songcount = modes.ForeignKey(Song, related_name="songcount", on_delete=models.CASCADE)
+    songcount = models.ForeignKey(Song, related_name="songcount", on_delete=models.CASCADE)
     count = models.IntegerField(default=0)
     def __repr__(self):
-    return f'{self.usercount.first_name} {self.songcount.title} {self.count}'
+        return f'{self.usercount.first_name} {self.songcount.title} {self.count}'
 
 
