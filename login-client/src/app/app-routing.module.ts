@@ -4,6 +4,8 @@ import { TemplatelogRegComponent } from './templatelog-reg/templatelog-reg.compo
 import { WelcomeComponent } from '../app/welcome/welcome.component';
 import { DetailsComponent } from '../app/details/details.component';
 import { from } from 'rxjs';
+import { ShowUserComponent } from './show-user/show-user.component';
+import { ShowSongComponent } from './show-song/show-song.component';
 
 const routes: Routes = [
   // routes to go
@@ -37,6 +39,24 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'songs',
+    children:[
+      {
+        path: ':song_id',
+        component: ShowSongComponent
+      }
+    ]
+  },
+  {
+    path: 'users',
+    children:[
+      {
+        path: ':user_id',
+        component: ShowUserComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

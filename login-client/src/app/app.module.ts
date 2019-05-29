@@ -13,6 +13,8 @@ import { DetailsComponent } from './details/details.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SongNewComponent } from './song-new/song-new.component';
+import { ShowUserComponent } from './show-user/show-user.component';
+import { ShowSongComponent } from './show-song/show-song.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { SongNewComponent } from './song-new/song-new.component';
     DetailsComponent,
     HeaderComponent,
     DashboardComponent,
-    SongNewComponent
+    SongNewComponent,
+    ShowUserComponent,
+    ShowSongComponent
   ],
   imports: [
     BrowserModule,
