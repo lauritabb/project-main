@@ -11,7 +11,11 @@ def index(request):
     return HttpResponse(data, content_type="application/json")
 
 def show(request,id):
+    test = Song.objects.filter(id=id)
+    print("*"*50)
+    print("test", test)
     data = serializers.serialize("json", Song.objects.filter(id=id), indent=2, use_natural_foreign_keys=True)
+    print("data:", data)
     return HttpResponse(data, status=200,content_type="application/json")
 
 def create(request):

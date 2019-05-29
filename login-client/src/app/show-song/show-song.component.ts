@@ -14,6 +14,7 @@ import { SongService } from '../song.service';
 export class ShowSongComponent implements OnInit {
   users: Users[];
   song: Song[];
+  playlistArr=[];
 
   constructor(
     private HttpService: HttpService,
@@ -32,6 +33,8 @@ export class ShowSongComponent implements OnInit {
         song => {
           console.log('show-song-component, getting single song:', song);
           this.song = song[0];
+          this.playlistArr = song[0].fields.playlist;
+          console.log("show-song-component:", this.playlistArr)
         },
         error => {
           console.log(error);

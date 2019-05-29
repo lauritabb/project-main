@@ -18,8 +18,8 @@ export class SongService {
     return this.http.post<Song>(this.baseURL+'/create/',song)
   }
 
-  getOneSong(user_id): Observable<Song>{
-    return this.http.get<Song>(this.baseURL + '/'+user_id);
+  getOneSong(song_id): Observable<Song>{
+    return this.http.get<Song>(this.baseURL + '/'+song_id);
   }
   getSongs(): Observable<Song[]>{
     return this.http.get<Song[]>(this.baseURL+'/');
