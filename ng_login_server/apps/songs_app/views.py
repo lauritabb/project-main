@@ -6,7 +6,7 @@ from .models import Count
 import json
 
 def index(request):
-    data = serializers.serialize("json", Song.objects.all(), indent=2, use_natural_foreign_keys=True)
+    data = serializers.serialize("json", Song.objects.all().order_by('-created_at'), indent=2, use_natural_foreign_keys=True)
     print("data on show", data)
     return HttpResponse(data, content_type="application/json")
 

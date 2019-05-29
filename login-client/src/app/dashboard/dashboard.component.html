@@ -17,7 +17,7 @@
               </tr> -->
             <tr *ngFor="let song of songs">
               <td>{{ song?.fields.artist }}</td>
-              <td>{{ song?.fields.title }}</td>
+              <td><a routerLink='/songs/{{song.pk}}'>{{ song?.fields.title }}</a></td>
               <td class="text-center">{{ song.fields.total_times_added }}</td>
               <!-- <td>{{ song?.fields.playlist.length}}</td> -->
               <td>
