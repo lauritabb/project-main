@@ -14,19 +14,16 @@ def show(request,id):
 
 def create(request):
     # decode post data
+    print('*'*50)
+    print("is getting her")
     data = json.loads(request.body.decode())
     valid, result = Song.objects.validate(data)
     print("*"*50)
     print("valid: ", valid)
-    # if errors:
-    #     return HttpResponse(json.dumps(errors), status=400, content_type="application/json")
-    # # create a user, return user info as jason
-    # user_info = User.objects.easy_create(data)
-    # # json_users = serializers.serialize('json',[user]) 
-    # user = {
-    #     'first_name': user_info.first_name,
-    #     'id': user_info.id
-    # }
-    # json_user = json.dumps(user)
-    # return HttpResponse(json_user, status=200, content_type='application/json')
-    return HttpResponse("we are in create of songs")
+    song_info = Song.objects.easy_create(data)
+    song = {
+        'title': song_info.title,
+        'id': song_info.id
+    }
+    json_songs = json.dumps(song)
+    return HttpResponse(json_songs, status=200, content_type='application/json')

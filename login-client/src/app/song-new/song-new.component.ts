@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { HttpService } from '../http.service';
 import { SongService } from '../song.service';
 import { NgForm } from '@angular/forms';
 import { Song } from '../song';
 import { Users } from '../users';
+import { FormsModule }   from '@angular/forms';
 
 @Component({
   selector: 'app-song-new',
@@ -13,12 +14,23 @@ import { Users } from '../users';
 export class SongNewComponent implements OnInit {
  newSong: Song = new Song();
  users: Users[];
+ @Output() addnewSongOut = new EventEmitter<Song>();
+registerSong: object ={
+  title:'',
+  artist:'',
+}
+
   constructor(private httpService:HttpService, private songService:SongService) { }
 
   ngOnInit() {
   }
-  addnewSong(event:Event, formNewSong: NgForm){
-    console.log("addnewSong on song-new component")
+  addnewSong(){
+    // console.log("form was submitter ->addTask ", formNewSong);
+    // this.addnewSongOut.emit(this.newSong);
+    this.songService.addSong(this.registerSong);
+    // this.songService.getSongs().subscribe(data => {this.})
+    // this.newSong = new Song();
+    // formNewSong.reset();
   }
 
 }
