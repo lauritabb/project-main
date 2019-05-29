@@ -34,7 +34,6 @@ class Song(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     total_times_added = models.IntegerField(default=0) #increments total no. times a song is "liked"
-
     objects = SongManager()
 
     def natural_key(self):
@@ -45,6 +44,8 @@ class Count(models.Model):
     songcount = models.ForeignKey(Song, related_name="songcount", on_delete=models.CASCADE)
     count = models.IntegerField(default=0)
     def __repr__(self):
+        return f'{self.usercount.first_name} {self.songcount.title} {self.count}'
+    def natural_key(self):
         return f'{self.usercount.first_name} {self.songcount.title} {self.count}'
 
 

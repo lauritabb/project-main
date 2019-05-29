@@ -10,10 +10,16 @@
               <th>Times added</th>
             </thead>
             <tbody>
+<<<<<<< HEAD
               <tr *ngFor="let user of users">
 
                   <td>{{ user.first_name }} {{ user.last_name }}</td>
                   <td></td>
+=======
+              <tr *ngFor="let user of count">
+                  <td>{{ user.fields.usercount.first_name }} {{ user.fields.usercount.last_name }}</td>
+                  <td>{{ user.fields.count}}</td>
+>>>>>>> 1bbe0c4022b1f301ee5214314adedfeb48e5e3a9
               </tr>
               <!-- </tr>
             <tr *ngFor="let song of songs">

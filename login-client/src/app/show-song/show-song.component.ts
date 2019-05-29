@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, count } from 'rxjs/operators';
 import { Song } from '../song';
 import { Users } from '../users';
+import { Count } from '../count';
 import { HttpService } from '../http.service';
 import { SongService } from '../song.service';
 
@@ -13,7 +14,10 @@ import { SongService } from '../song.service';
 })
 export class ShowSongComponent implements OnInit {
   users: Users[];
-  song: Song[];
+  song: Song;
+  playlistArr=[];
+  person = localStorage.getItem('user');
+  count: Count[]=[];
 
   constructor(
     private HttpService: HttpService,
@@ -29,10 +33,17 @@ export class ShowSongComponent implements OnInit {
           this.songService.getOneSong(params.get('song_id')))
       )
       .subscribe(
-        song => {
-          console.log('show-song-component, getting single song:', song);
+        data => {
+          console.log('show-song-component, getting single song:', data);
+          const playlist = JSON.parse(data.playlist);
+          const song = JSON.parse(data.song1);
+          const countOne = JSON.parse(data.count);
           this.song = song[0];
-          console.log(this.song);
+          this.playlistArr = playlist;
+          this.count = countOne;
+          console.log("song: ",this.song);
+          console.log("playlist",this.playlistArr);
+          console.log("Count from component",this.count);
         },
         error => {
           console.log(error);
@@ -42,3 +53,4 @@ export class ShowSongComponent implements OnInit {
   }
 
 }
+
