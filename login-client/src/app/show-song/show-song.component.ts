@@ -32,12 +32,13 @@ export class ShowSongComponent implements OnInit {
         song => {
           console.log('show-song-component, getting single song:', song);
           this.song = song[0];
+          console.log(this.song);
         },
         error => {
           console.log(error);
         }
+
       );
-      console.log(this.song);
   }
 
 }
