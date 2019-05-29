@@ -16,12 +16,12 @@
                   <td>Button to add to playlist</td>
               </tr> -->
             <tr *ngFor="let song of songs">
-              <td>{{ song.fields.artist }}</td>
-              <td>{{ song.fields.title }}</td>
-              <td class="text-center">{{ song.fields.playlist.length }}</td>
+              <td>{{ song?.fields.artist }}</td>
+              <td>{{ song?.fields.title }}</td>
+              <td class="text-center">{{ song?.fields.playlist.length }}</td>
               <!-- <td>{{ song?.fields.playlist.length}}</td> -->
               <td>
-                <button class="btn btn-secondary" (click)="addToPlaylist(song.pk)">Add to playlist</button>
+                <button class="btn btn-secondary" (click)="addToPlaylist(song.pk, person)">Add to playlist</button>
               </td>
             </tr>
           </tbody>
@@ -30,3 +30,4 @@
         <hr>
       </div>
 </div>
+<app-song-new (addnewSongOut)='addSongEvent($event)'></app-song-new>

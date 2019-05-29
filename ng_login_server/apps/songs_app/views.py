@@ -31,3 +31,13 @@ def create(request):
     else:
         json_errors = json.dumps(result)
         return HttpResponse(json_errors, status=400, content_type="application/json")
+
+def addPlaylist(request):
+    buttonData = json.loads(request.body.decode())
+    songToAdd= Song.objects.filter(id=buttonData[0])
+    userToPlaylist= User.objects.filter(id=buttonData[1])
+    userToPlaylist.add
+    print('*'*50)
+    print("is getting here", buttonData)
+    print("query - songToAdd: ", songToAdd
+    return 2

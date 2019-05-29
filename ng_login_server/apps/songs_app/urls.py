@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.index),
     path('<int:id>/', views.show),
     path('create/',views.create),
+    path('playlist/',views.addPlaylist),
 ]

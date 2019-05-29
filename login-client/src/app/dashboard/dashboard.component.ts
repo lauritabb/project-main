@@ -9,6 +9,8 @@ import { SongService } from '../song.service';
 })
 export class DashboardComponent implements OnInit {
   songs: Song[] = [];
+  playlist: number =0;
+  person = localStorage.getItem('user');
 
   constructor(private songService: SongService) { }
 
@@ -22,12 +24,19 @@ export class DashboardComponent implements OnInit {
         console.log(error);
       });
   }
-
-  // addToPlaylist(song: Song){
-  //   event.preventDefault();
-  //   console.log('in dashboard component.ts; adding song to playlist', song);
-  //   // this.songs.push(song);
-  //   // this.songService.
-  // }
+  // this needs check, the html loads faster than the data, reason why it gives at undefined error
+  addSongEvent(song: Song){
+    console.log("in dashboard.component adding song", song)
+    // this.songs.push(song);
+  }
+  addToPlaylist(song_id, person){
+    console.log(song_id, person)
+    this.songService.addToUserPlaylist(song_id, person).subscribe(data =>{
+      console.log("addto play");
+    }, 
+    error =>{
+      console.log(error)
+    });
+  }
 }
 

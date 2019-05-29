@@ -4,15 +4,15 @@ from apps.log_reg.models import User
 class SongManager(models.Manager):
     def validate(self, form):
         matching_title = Song.objects.filter(title= form['title'])
-        # print("*"*50)
-        # print("matching_title", matching_title.values())
-        compareForm = form['artist']
-        match = matching_title[0].artist
-        # print("compareForm: ", compareForm)
-        # print("match: ", match)
+        print("*"*50)
+        print("matching_title", matching_title.values())
         if matching_title:
-            # print("matching_title:", matching_title[0].artist)
-            # print("form['artist']: ", form['artist'])
+            print("matching_title:", matching_title[0].artist)
+            print("form['artist']: ", form['artist'])
+            compareForm = form['artist']
+            match = matching_title[0].artist
+            print("compareForm: ", compareForm)
+            print("match: ", match)
             if match == compareForm:
                 print("gets here")
                 return (False, ['there is one'])
