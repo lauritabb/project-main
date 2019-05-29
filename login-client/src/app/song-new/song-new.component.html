@@ -6,10 +6,10 @@
         <input type="text" name="title" class="form-control" id="name" aria-describedby="emailHelp" 
         required
         minlength="3"
-        [(ngModel)]="registerSong.title"
+        [(ngModel)]="newSong.title"
         [ngModelOptions]="{updateOn: 'blur'}"
         #titleSong ="ngModel">
-        <p>{{registerSong.title}}</p>
+        <p>{{newSong.title}}</p>
         <div *ngIf="!titleSong.valid && (titleSong.dirty || titleSong.touched)" class="text-errors"> Error, input valid value</div>
       </div>
       <div class="form-group">
@@ -17,10 +17,10 @@
         <input type="text" name="artist" class="form-control" id="exampleInputPassword1" 
         required
         minlength="3"
-        [(ngModel)]="registerSong.artist"
+        [(ngModel)]="newSong.artist"
         [ngModelOptions]="{updateOn: 'blur'}"
         #artistSong ="ngModel">
-        <p>{{registerSong.artist}}</p>
+        <p>{{newSong.artist}}</p>
         <div *ngIf="!artistSong.valid && (artistSong.dirty || artistSong.touched)" class="text-errors"> Error, input valid value</div>
       </div>
       <button type="submit" *ngIf="formNewSong.valid" class="btn btn-primary">Add Task</button>

@@ -22,7 +22,14 @@ def create(request):
     print("valid: ", valid)
     if valid:
         song_info = Song.objects.easy_create(data)
-        data = serializers.serialize("json", [song_info], indent=2, use_natural_foreign_keys=True)
+        data = serializers.serialize("json", [song_info], indent=2)
+        # song = {
+        #     'title': song_info.title,
+        #     'artist': song_info.artist, 
+        #     'id': song_info.id
+        # }
+        # json_songs = json.dumps(song)
+        # print("json_songs", json_songs)
         return HttpResponse(data, status=200, content_type='application/json')
     else:
         json_errors = json.dumps(result)

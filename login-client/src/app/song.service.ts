@@ -9,15 +9,13 @@ import { Song } from './song'
 })
 export class SongService {
   baseURL = 'http://localhost:8000/songs'
+  testData =[];
+
   constructor(private http:HttpClient, private route:Router) { }
 
-  addSong(song: Song): void{
+  addSong(song): Observable<Song>{
     console.log("we are in add Song ", song)
-    let obs =this.http.post<Song>(`${this.baseURL}/create/`,song);
-    obs.subscribe(data => {
-      console.log("hello")
-    })
-    // return this.http.post<Song>(this.baseURL+'/create/',song)
+    return this.http.post<Song>(this.baseURL+'/create/',song)
   }
 
   getOneSong(user_id): Observable<Song>{
@@ -25,5 +23,12 @@ export class SongService {
   }
   getSongs(): Observable<Song[]>{
     return this.http.get<Song[]>(this.baseURL+'/');
+  }
+  addToUserPlaylist(song_id, person_id){
+    console.log("got to Song.service.ts, song_id: ", song_id, person_id)
+    this.testData.push(song_id)
+    this.testData.push(person_id) 
+    return this.http.post<Song>(this.baseURL + '/playlist/', this.testData);
+
   }
 }

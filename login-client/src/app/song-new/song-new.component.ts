@@ -4,7 +4,7 @@ import { SongService } from '../song.service';
 import { NgForm } from '@angular/forms';
 import { Song } from '../song';
 import { Users } from '../users';
-import { FormsModule }   from '@angular/forms';
+
 
 @Component({
   selector: 'app-song-new',
@@ -24,13 +24,17 @@ registerSong: object ={
 
   ngOnInit() {
   }
-  addnewSong(){
-    // console.log("form was submitter ->addTask ", formNewSong);
-    // this.addnewSongOut.emit(this.newSong);
-    this.songService.addSong(this.registerSong);
-    // this.songService.getSongs().subscribe(data => {this.})
-    // this.newSong = new Song();
-    // formNewSong.reset();
+  addnewSong(event:Event, formNewSong: NgForm){
+    event.preventDefault();
+    console.log("form was submitter ->addTask ", formNewSong);
+    console.log("newSong was submitter ->addTask ", this.newSong);
+    this.songService.addSong(this.newSong).subscribe(data => {
+      console.log("data on son-new.component:", data)
+      this.newSong = data
+      this.addnewSongOut.emit(this.newSong);
+    })
+    this.newSong = new Song();
+    formNewSong.reset();
   }
 
 }

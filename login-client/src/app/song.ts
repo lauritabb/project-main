@@ -1,7 +1,7 @@
 export class Song {
-    pk: string;
+    pk?: string;
     title: string;
     artist: string;
-    fields: object;
+    field: object;
     playlist: string[];
 }

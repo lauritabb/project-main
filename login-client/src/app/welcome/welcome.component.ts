@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service'; 
+import { Song } from '../song';
 
 
 @Component({
@@ -15,6 +16,5 @@ export class WelcomeComponent implements OnInit {
   ngOnInit() {
     console.log(this.namePerson);
   }
-  
 
 }
