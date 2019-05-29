@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
     console.log("this.songs: ", this.songs)
   }
 
-  addToPlaylist(song_id, person){
+  addToPlaylist(song_id: number, person: number){
     console.log(song_id, person)
     this.songService.addToUserPlaylist(song_id, person).subscribe(data =>{
       console.log("addto play");
@@ -39,6 +39,14 @@ export class DashboardComponent implements OnInit {
     error =>{
       console.log(error)
     });
+    this.songService.getSongs()
+      .subscribe( data => {
+        console.log("these are the songs!!!!", data);
+        this.songs = data;
+      },
+      error => {
+        console.log(error);
+      });
   }
 }
 

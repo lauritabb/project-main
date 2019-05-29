@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.core import serializers
-# from .models import User
+from .models import User
 from .models import Song
 import json
 
 def index(request):
     data = serializers.serialize("json", Song.objects.all(), indent=2, use_natural_foreign_keys=True)
+    print("data on show", data)
     return HttpResponse(data, content_type="application/json")
 
 def show(request,id):
@@ -22,27 +23,18 @@ def create(request):
     print("valid: ", valid)
     if valid:
         song_info = Song.objects.easy_create(data)
-        data = serializers.serialize("json", [song_info], indent=2)
-        # song = {
-        #     'title': song_info.title,
-        #     'artist': song_info.artist, 
-        #     'id': song_info.id
-        # }
-        # json_songs = json.dumps(song)
-        # print("json_songs", json_songs)
+        data = serializers.serialize("json", [song_info], indent=2, use_natural_foreign_keys=True)
         return HttpResponse(data, status=200, content_type='application/json')
     else:
         json_errors = json.dumps(result)
         return HttpResponse(json_errors, status=400, content_type="application/json")
 
 def addPlaylist(request):
-    pass
-#     buttonData = json.loads(request.body.decode())
-#     songToAdd= Song.objects.filter(id=buttonData[0])
-#     userToPlaylist= User.objects.filter(id=buttonData[1])
-#     userToPlaylist.add
-#     print('*'*50)
-#     print("is getting here", buttonData)
-#     print("query - songToAdd: ", songToAdd
-#     json_songs = json.dumps(songToAdd)
-#     return HttpResponse(json_songs, status=200, content_type='application/json')
+    buttonData = json.loads(request.body.decode())
+    print("buttonData:", buttonData)
+    # buttonData = song_id,person_id
+    songToAdd= Song.objects.get(id=buttonData['song_id'])
+    print("songToAdd", songToAdd)
+    userToPlaylist= User.objects.get(id=int(buttonData['person_id']))
+    songToAdd.playlist.add(userToPlaylist)
+    return HttpResponse("hello")
