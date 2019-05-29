@@ -15,15 +15,19 @@ def show(request,id):
 def create(request):
     # decode post data
     print('*'*50)
-    print("is getting her")
+    print("is getting here")
     data = json.loads(request.body.decode())
     valid, result = Song.objects.validate(data)
     print("*"*50)
     print("valid: ", valid)
-    song_info = Song.objects.easy_create(data)
-    song = {
-        'title': song_info.title,
-        'id': song_info.id
-    }
-    json_songs = json.dumps(song)
-    return HttpResponse(json_songs, status=200, content_type='application/json')
+    if valid:
+        song_info = Song.objects.easy_create(data)
+        song = {
+            'title': song_info.title,
+            'id': song_info.id
+        }
+        json_songs = json.dumps(song)
+        return HttpResponse(json_songs, status=200, content_type='application/json')
+    else:
+        json_errors = json.dumps(result)
+        return HttpResponse(json_errors, status=400, content_type="application/json")

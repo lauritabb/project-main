@@ -14,7 +14,7 @@ import { FormsModule }   from '@angular/forms';
 export class SongNewComponent implements OnInit {
  newSong: Song = new Song();
  users: Users[];
- @Output() addnewSongOut = new EventEmitter<Song>();
+//  @Output() addnewSongOut = new EventEmitter<Song>();
 registerSong: object ={
   title:'',
   artist:'',
@@ -26,7 +26,7 @@ registerSong: object ={
   }
   addnewSong(){
     // console.log("form was submitter ->addTask ", formNewSong);
-    // this.addnewSongOut.emit(this.newSong);
+    // this.addnewSongOut.emit(this.registerSong);
     this.songService.addSong(this.registerSong);
     // this.songService.getSongs().subscribe(data => {this.})
     // this.newSong = new Song();
