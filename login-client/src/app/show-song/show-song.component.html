@@ -1,6 +1,7 @@
 <app-header></app-header>
 <div class="container">
   <h2>Others who added {{ song?.fields.title }}</h2>
+  {{ song?.fields.first_name }}
   <div class="row">
     <div class="col-6">
         <table class="table">
@@ -10,7 +11,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let user of users">
-                  <td>{{ user.fields.first_name }} {{ user.fields.last_name }}</td>
+                  <td>{{ user.fields.playlist.first_name }} {{ user.fields.playlist.last_name }}</td>
                   <td># times the user has added the song to their playlist</td>
               </tr>
               <!-- </tr>

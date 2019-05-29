@@ -13,7 +13,7 @@ import { SongService } from '../song.service';
 })
 export class ShowSongComponent implements OnInit {
   users: Users[];
-  song: Song;
+  song: Song[];
 
   constructor(
     private HttpService: HttpService,
