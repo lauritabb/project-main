@@ -10,9 +10,9 @@
               <th>Times added</th>
             </thead>
             <tbody>
-              <tr *ngFor="let user of playlistArr">
-                  <td>{{ user.first_name }} {{ user.last_name }}</td>
-                  <td>{{count[0].fields.count}}</td>
+              <tr *ngFor="let user of count">
+                  <td>{{ user.fields.usercount.first_name }} {{ user.fields.usercount.last_name }}</td>
+                  <td>{{ user.fields.count}}</td>
               </tr>
               <!-- </tr>
             <tr *ngFor="let song of songs">
