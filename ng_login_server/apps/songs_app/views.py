@@ -22,22 +22,27 @@ def create(request):
     print("valid: ", valid)
     if valid:
         song_info = Song.objects.easy_create(data)
-        song = {
-            'title': song_info.title,
-            'id': song_info.id
-        }
-        json_songs = json.dumps(song)
-        return HttpResponse(json_songs, status=200, content_type='application/json')
+        data = serializers.serialize("json", [song_info], indent=2)
+        # song = {
+        #     'title': song_info.title,
+        #     'artist': song_info.artist, 
+        #     'id': song_info.id
+        # }
+        # json_songs = json.dumps(song)
+        # print("json_songs", json_songs)
+        return HttpResponse(data, status=200, content_type='application/json')
     else:
         json_errors = json.dumps(result)
         return HttpResponse(json_errors, status=400, content_type="application/json")
 
 def addPlaylist(request):
-    buttonData = json.loads(request.body.decode())
-    songToAdd= Song.objects.filter(id=buttonData[0])
-    userToPlaylist= User.objects.filter(id=buttonData[1])
-    userToPlaylist.add
-    print('*'*50)
-    print("is getting here", buttonData)
-    print("query - songToAdd: ", songToAdd
-    return 2
+    pass
+#     buttonData = json.loads(request.body.decode())
+#     songToAdd= Song.objects.filter(id=buttonData[0])
+#     userToPlaylist= User.objects.filter(id=buttonData[1])
+#     userToPlaylist.add
+#     print('*'*50)
+#     print("is getting here", buttonData)
+#     print("query - songToAdd: ", songToAdd
+#     json_songs = json.dumps(songToAdd)
+#     return HttpResponse(json_songs, status=200, content_type='application/json')

@@ -28,9 +28,10 @@ registerSong: object ={
     event.preventDefault();
     console.log("form was submitter ->addTask ", formNewSong);
     console.log("newSong was submitter ->addTask ", this.newSong);
-    this.addnewSongOut.emit(this.newSong);
     this.songService.addSong(this.newSong).subscribe(data => {
+      console.log("data on son-new.component:", data)
       this.newSong = data
+      this.addnewSongOut.emit(this.newSong);
     })
     this.newSong = new Song();
     formNewSong.reset();
