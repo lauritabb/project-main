@@ -42,9 +42,9 @@ class Song(models.Model):
 
 class Count(models.Model):
     usercount = models.ForeignKey(User, related_name="usercount", on_delete=models.CASCADE)
-    songcount = modes.ForeignKey(Song, related_name="songcount", on_delete=models.CASCADE)
+    songcount = models.ForeignKey(Song, related_name="songcount", on_delete=models.CASCADE)
     count = models.IntegerField(default=0)
     def __repr__(self):
-    return f'{self.usercount.first_name} {self.songcount.title} {self.count}'
+        return f'{self.usercount.first_name} {self.songcount.title} {self.count}'
 
 
