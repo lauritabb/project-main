@@ -11,21 +11,32 @@ def index(request):
     return HttpResponse(data, content_type="application/json")
 
 def show(request,id):
-    test = Song.objects.filter(id=id)
-    print("*"*50)
-    print("test", test)
-    data = serializers.serialize("json", Song.objects.filter(id=id), indent=2, use_natural_foreign_keys=True)
-    print("data:", data)
-    return HttpResponse(data, status=200,content_type="application/json")
+    song = Song.objects.get(id=id)
+    # print("*"*50)
+    # print("test", test)
+    result ={
+        'song1' : serializers.serialize("json",[song], use_natural_foreign_keys=True),
+        'playlist': serializers.serialize("json", song.playlist.all(), use_natural_foreign_keys=True),
+        'count': serializers.serialize("json", Count.objects.filter(songcount=id),use_natural_foreign_keys=True)
+    }
+    # data = serializers.serialize("json", Song.objects.filter(id=id), indent=2, use_natural_foreign_keys=True)
+    # data2 = serializers.serialize("json", Song.objects)
+    # print("data:", data)
+    return HttpResponse(json.dumps(result), status=200,content_type="application/json")
+
+def showCount(request,person_id):
+    print("We are in showCount")
+    # Count.objects.filter
+    pass
 
 def create(request):
     # decode post data
-    print('*'*50)
-    print("is getting here")
+    # print('*'*50)
+    # print("is getting here")
     data = json.loads(request.body.decode())
     valid, result = Song.objects.validate(data)
-    print("*"*50)
-    print("valid: ", valid)
+    # print("*"*50)
+    # print("valid: ", valid)
     if valid:
         song_info = Song.objects.easy_create(data)
         data = serializers.serialize("json", [song_info], indent=2, use_natural_foreign_keys=True)
