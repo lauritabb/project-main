@@ -9,7 +9,7 @@ import { Song } from './song'
 })
 export class SongService {
   baseURL = 'http://localhost:8000/songs'
-  testData =[];
+
 
   constructor(private http:HttpClient, private route:Router) { }
 
@@ -24,11 +24,10 @@ export class SongService {
   getSongs(): Observable<Song[]>{
     return this.http.get<Song[]>(this.baseURL+'/');
   }
-  addToUserPlaylist(song_id, person_id){
+  addToUserPlaylist(song_id: number, person_id:number){
     console.log("got to Song.service.ts, song_id: ", song_id, person_id)
-    this.testData.push(song_id)
-    this.testData.push(person_id) 
-    return this.http.post<Song>(this.baseURL + '/playlist/', this.testData);
+    // this.testData.push(person_id) 
+    return this.http.post<Song>(this.baseURL + '/playlist/', {song_id,person_id});
 
   }
 }
