@@ -1,3 +1,30 @@
-<p>
-  show-song works!
-</p>
+<app-header></app-header>
+<div class="container">
+  <h2>Others who added {{ song?.fields.title }}</h2>
+  <div class="row">
+    <div class="col-6">
+        <table class="table">
+            <thead>
+              <th>Name</th>
+              <th>Times added</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                  <td>{{ user.fields.first_name }} {{ user.fields.last_name }}</td>
+                  <td># times the user has added the song to their playlist</td>
+              </tr>
+              <!-- </tr>
+            <tr *ngFor="let song of songs">
+              <td>{{ song.fields.artist }}</td>
+              <td>{{ song.fields.title }}</td>
+              <td class="text-center">{{ song.fields.playlist.length }}</td>
+              <td>{{ song?.fields.playlist.length}}</td>
+              <td>
+                <button class="btn btn-secondary" (click)="addToPlaylist(song.pk)">Add to playlist</button>
+              </td>
+            </tr> -->
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
