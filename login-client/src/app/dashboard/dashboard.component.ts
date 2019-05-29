@@ -23,11 +23,11 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  addToPlaylist(song: Song){
-    event.preventDefault();
-    console.log('in dashboard component.ts; adding song to playlist', song);
-    // this.songs.push(song);
-    // this.songService.
-  }
+  // addToPlaylist(song: Song){
+  //   event.preventDefault();
+  //   console.log('in dashboard component.ts; adding song to playlist', song);
+  //   // this.songs.push(song);
+  //   // this.songService.
+  // }
 }
 
