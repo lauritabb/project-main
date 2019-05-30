@@ -6,11 +6,12 @@ from .models import Count
 import json
 
 def index(request):
-    data = serializers.serialize("json", Song.objects.all(), indent=2, use_natural_foreign_keys=True)
+    data = serializers.serialize("json", Song.objects.all().order_by('-created_at'), indent=2, use_natural_foreign_keys=True)
     print("data on show", data)
     return HttpResponse(data, content_type="application/json")
 
 def show(request,id):
+    #show count playlist and song for show-song
     song = Song.objects.get(id=id)
     # print("*"*50)
     # print("test", test)
@@ -24,10 +25,17 @@ def show(request,id):
     # print("data:", data)
     return HttpResponse(json.dumps(result), status=200,content_type="application/json")
 
-def showCount(request,person_id):
-    print("We are in showCount")
-    # Count.objects.filter
-    pass
+def showUser(request,id):
+    #this is what we are doing 
+    print("we are in showUser")
+    users = User.objects.get(id=id)
+    songs = users.songs.all()
+    result ={
+        'This_user_songs': serializers.serialize("json",[users], use_natural_foreign_keys=True),
+        'playlist': serializers.serialize("json", songs, use_natural_foreign_keys=True),
+        'count': serializers.serialize("json", Count.objects.filter(usercount=id),use_natural_foreign_keys=True)
+    }
+    return HttpResponse(json.dumps(result), status=200,content_type="application/json")
 
 def create(request):
     # decode post data

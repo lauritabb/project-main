@@ -9,24 +9,20 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class HttpService {
-  // baseURL = 'https://localhost:8000/api/login-client/';
   baseURL = 'http://localhost:8000'
 
   constructor(private _http: HttpClient, private router:Router) { 
-    // this.getUsers();
   }
 
-  // this one => get all users
   getUsers(): Observable<Users[]>{
     return this._http.get<Users[]>(this.baseURL);
-    // tempObs.subscribe(data => console.log("got it", data));
   }
   
-  //get one user, specific user id, capture from url
   getOneUser(user_id): Observable<Users>{
     return this._http.get<Users>(this.baseURL + '/'+user_id);
-    // it can also be done like this:
-    // return this._http.get<Users>(`${this.baseURL}/${user_id}`)
+  }
+  getOneUserSong(user_id): Observable<UserSongs>{
+    return this._http.get<UserSongs>(this.baseURL + '/songs/users/'+user_id);
   }
 
 
@@ -61,4 +57,10 @@ export class HttpService {
 interface UserData {
   first_name: string;
   id: string;
+}
+
+interface UserSongs{
+  This_user_songs: string;
+  playlist: string;
+  count: string;
 }

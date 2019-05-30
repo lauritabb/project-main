@@ -7,6 +7,7 @@ export class Users {
     last_name: string;
     email: string;
     password: string;
+    fields?:object;
     pwr:string;
 
     constructor(){
