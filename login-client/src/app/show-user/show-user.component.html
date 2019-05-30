@@ -1,0 +1,22 @@
+<app-header></app-header>
+<div class="container">
+  <h2>{{users?.fields.first_name}} {{users?.fields.last_name}}'s Playlist</h2>
+  <div class="row">
+    <div class="col-6">
+        <table class="table">
+          <thead>
+            <th>Artist</th>
+            <th>Title</th>
+            <th>Times added to Playlist</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let song of count">
+              <td>{{ song?.fields.songcount.artist }}</td>
+              <td>{{ song?.fields.songcount.title }}</td>
+              <td class="text-center">{{ song?.fields.count}}</td>
+              </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>

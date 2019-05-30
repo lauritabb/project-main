@@ -1,0 +1,32 @@
+<div class="container">
+    <p>All the songs in our hub:</p>
+    <div class="container">
+        <table class="table">
+          <thead>
+            <th>Artist</th>
+            <th>Title</th>
+            <th>No. of Times Song Has Been Added</th>
+            <th>Add to Playlist</th>
+          </thead>
+          <tbody>
+              <!-- <tr>
+                  <td>Song artist</td>
+                  <td>Song title</td>
+                  <td># song adds</td>
+                  <td>Button to add to playlist</td>
+              </tr> -->
+            <tr *ngFor="let song of songs">
+              <td>{{ song?.fields.artist }}</td>
+              <td><a routerLink='/songs/{{song.pk}}'>{{ song?.fields.title }}</a></td>
+              <td class="text-center">{{ song.fields.total_times_added }}</td>
+              <!-- <td>{{ song?.fields.playlist.length}}</td> -->
+              <td>
+                <button class="btn btn-secondary" (click)="addToPlaylist(song.pk, person)">Add to playlist</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr>
+      </div>
+</div>
+<app-song-new (addnewSongOut)='addSongEvent($event)'></app-song-new>
