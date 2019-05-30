@@ -29,9 +29,10 @@ def showUser(request,id):
     #this is what we are doing 
     print("we are in showUser")
     users = User.objects.get(id=id)
+    songs = users.songs.all()
     result ={
-        'This_user': serializers.serialize("json",[users], use_natural_foreign_keys=True),
-        'playlist': serializers.serialize("json", users.songs.all(), use_natural_foreign_keys=True),
+        'This_user_songs': serializers.serialize("json",[users], use_natural_foreign_keys=True),
+        'playlist': serializers.serialize("json", songs, use_natural_foreign_keys=True),
         'count': serializers.serialize("json", Count.objects.filter(usercount=id),use_natural_foreign_keys=True)
     }
     return HttpResponse(json.dumps(result), status=200,content_type="application/json")

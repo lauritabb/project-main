@@ -60,7 +60,7 @@ interface UserData {
 }
 
 interface UserSongs{
-  This_user: string;
+  This_user_songs: string;
   playlist: string;
   count: string;
 }
