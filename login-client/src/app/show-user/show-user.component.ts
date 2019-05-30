@@ -3,7 +3,7 @@ import {ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../http.service';
 import { Song } from '../song';
 import { SongService } from '../song.service';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, count } from 'rxjs/operators';
 import { Count } from '../count';
 import { Users } from '../users';
 
@@ -16,6 +16,8 @@ export class ShowUserComponent implements OnInit {
   playlistArr=[];
   users: Users;
   count: Count[]=[];
+  dict = {}
+  dict2={}
   constructor(
     private httpService: HttpService,
     private songService: SongService,

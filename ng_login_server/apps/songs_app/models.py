@@ -37,7 +37,7 @@ class Song(models.Model):
     objects = SongManager()
 
     def natural_key(self):
-        return(f'{self.title} {self.artist} {self.playlist} {self.total_times_added}')
+        return ({'title': self.title, 'artist': self.artist, 'playlist': self.artist, 'total_times_added': self.total_times_added})
 
 class Count(models.Model):
     usercount = models.ForeignKey(User, related_name="usercount", on_delete=models.CASCADE)
