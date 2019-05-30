@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="container">
-  <h2>{{users.fields.first_name}} {{users.fields.last_name}} Playlist</h2>
+  <h2>{{users?.fields.first_name}} {{users?.fields.last_name}} Playlist</h2>
   <div class="row">
     <div class="col-6">
         <table class="table">
@@ -10,17 +10,11 @@
             <th>Times added to Playlist</th>
           </thead>
           <tbody>
-              <tr>
-                  <td>Song artist</td>
-                  <td>Song title</td>
-                  <td># song adds</td>
+            <tr *ngFor="let song of count">
+              <td>{{ song?.fields.songcount.artist }}</td>
+              <td>{{ song?.fields.songcount.title }}</td>
+              <td class="text-center">{{ song?.fields.count}}</td>
               </tr>
-            <tr *ngFor="let song of songs">
-              <td>{{ song.fields.artist }}</td>
-              <td>{{ song.fields.title }}</td>
-              <td class="text-center">{{ song.fields.playlist.length }}</td>
-              <td>{{ song?.fields.playlist.length}}</td>
-            </tr>
           </tbody>
         </table>
     </div>
