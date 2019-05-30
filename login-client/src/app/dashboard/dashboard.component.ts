@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit {
       console.log("addto play");
       this.songService.getSongs()
         .subscribe( data => {
+          console.log("these are the songs!!!!", data);
           this.songs = data;
         },
         error => {
