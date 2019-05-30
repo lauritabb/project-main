@@ -31,15 +31,12 @@ export class HttpService {
   }
 
   loginUser(loginData:object): void{
-    console.log("loginData",loginData);
     let obs = this._http.post<UserData>(`${this.baseURL}/login/`, loginData);
     obs.subscribe(
       (data) => {
-        console.log('data:', data)
         localStorage.setItem('user', data.id);
         localStorage.setItem('name', data.first_name);
         this.router.navigateByUrl('/login/welcome')
-        console.log(localStorage);
 
       },
       (errors) => {

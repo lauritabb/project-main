@@ -17,36 +17,30 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.songService.getSongs()
       .subscribe( data => {
-        console.log("these are the songs!!!!", data);
         this.songs = data;
       },
       error => {
         console.log(error);
       });
   }
-  // this needs check, the html loads faster than the data, reason why it gives at undefined error
   addSongEvent(song: Song){
-    console.log("in dashboard.component adding song", song)
     this.songs.push(song[0]);
-    console.log("this.songs: ", this.songs)
   }
 
   addToPlaylist(song_id: number, person: number){
-    console.log(song_id, person)
     this.songService.addToUserPlaylist(song_id, person).subscribe(data =>{
       console.log("addto play");
+      this.songService.getSongs()
+        .subscribe( data => {
+          this.songs = data;
+        },
+        error => {
+          console.log(error);
+        });
     }, 
     error =>{
       console.log(error)
     });
-    this.songService.getSongs()
-      .subscribe( data => {
-        console.log("these are the songs!!!!", data);
-        this.songs = data;
-      },
-      error => {
-        console.log(error);
-      });
   }
 }
 

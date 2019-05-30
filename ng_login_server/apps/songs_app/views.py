@@ -70,4 +70,4 @@ def addPlaylist(request):
     songToAdd.total_times_added +=1
     songToAdd.save()
     # print("songToAdd", songToAdd)
-    return HttpResponse("hello")
+    return redirect('/')

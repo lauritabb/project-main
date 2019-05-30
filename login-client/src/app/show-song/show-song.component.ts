@@ -34,16 +34,12 @@ export class ShowSongComponent implements OnInit {
       )
       .subscribe(
         data => {
-          console.log('show-song-component, getting single song:', data);
           const playlist = JSON.parse(data.playlist);
           const song = JSON.parse(data.song1);
           const countOne = JSON.parse(data.count);
           this.song = song[0];
           this.playlistArr = playlist;
           this.count = countOne;
-          console.log("song: ",this.song);
-          console.log("playlist",this.playlistArr);
-          console.log("Count from component",this.count);
         },
         error => {
           console.log(error);

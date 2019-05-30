@@ -33,16 +33,12 @@ export class ShowUserComponent implements OnInit {
       )
       .subscribe(
         data => {
-          console.log('show-song-component, getting single song:', data);
           const playlist = JSON.parse(data.playlist);
           const user = JSON.parse(data.This_user_songs);
           const countOne = JSON.parse(data.count);
           this.users = user[0];
           this.playlistArr = playlist;
           this.count = countOne;
-          console.log("users: ",this.users);
-          console.log("playlist",this.playlistArr);
-          console.log("Count from component",this.count);
         },
         error => {
           console.log(error);
