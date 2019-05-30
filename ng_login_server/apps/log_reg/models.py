@@ -8,6 +8,7 @@ PASS_REGEX = re.compile(r'^(?=.*[A-Z])(?=.*\d)(.{8,15})$')
 class UserManager(models.Manager):
     def validate(self, form):
         errors=[]
+        matching_users = User.objects.filter(email=form['email'])
         #validate name
         if len(form['first_name']) < 2:
             errors.append("First name must be at least 2 characters")
@@ -17,6 +18,8 @@ class UserManager(models.Manager):
             errors.append("Last name must be at least 2 characters")
         elif not NAME_REGEX.match(form['last_name']):
             errors.append("last name must be only letters")
+        if matching_users:
+            errors.append("email exists!")
         if len(form['password']) < 8:#validate password
             errors.append("Password must contain 8 characters")
         elif PASS_REGEX.match(form['password']):
