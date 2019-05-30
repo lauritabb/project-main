@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { NgForm } from '@angular/forms';
-import { FormsModule }   from '@angular/forms';
 import { Users } from '../users';
 import { Router } from '@angular/router';
 
@@ -12,15 +11,7 @@ import { Router } from '@angular/router';
 })
 export class TemplatelogRegComponent implements OnInit {
   newUser : Users = new Users();
-  //get from database
   thisUser: object =[];
-
-  // registerForm: object ={
-  //   first_name:'',
-  //   last_name:'',
-  //   email:'',
-  //   password:'',
-  // }
 
   loginData: object ={
     email:'',
@@ -30,7 +21,6 @@ export class TemplatelogRegComponent implements OnInit {
   constructor(private httpService:HttpService, private router:Router) { }
 
   ngOnInit() {
-    // if (!localStorage.getItem('user')){return }
     this.httpService.getUsers().subscribe(data =>{
     this.thisUser= data;
     },
@@ -41,11 +31,7 @@ export class TemplatelogRegComponent implements OnInit {
   }
   onSubmit(event:Event, form: NgForm){
     event.preventDefault();
-    console.log('form was submitted', form)
-    console.log('new user: ', this.newUser)
-    //set new task to become value
     this.httpService.createUser(this.newUser).subscribe(userCreated =>{
-      console.log(userCreated) 
       localStorage.setItem('user', userCreated.id);
       localStorage.setItem('name', userCreated.first_name);
       this.router.navigateByUrl('/login/welcome')

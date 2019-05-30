@@ -23,7 +23,6 @@ def create(request):
         return HttpResponse(json.dumps(errors), status=400, content_type="application/json")
     # create a user, return user info as jason
     user_info = User.objects.easy_create(data)
-    # json_users = serializers.serialize('json',[user]) 
     user = {
         'first_name': user_info.first_name,
         'id': user_info.id

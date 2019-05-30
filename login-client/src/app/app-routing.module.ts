@@ -8,7 +8,6 @@ import { ShowUserComponent } from './show-user/show-user.component';
 import { ShowSongComponent } from './show-song/show-song.component';
 
 const routes: Routes = [
-  // routes to go
   {
     path:'',
     pathMatch: 'full',
@@ -25,14 +24,6 @@ const routes: Routes = [
         path:'welcome', //localhost:4200/login/welcome
         component:WelcomeComponent
       },
-      // {
-      //   // one user id
-      //   path: ':user_id', //localhost:4200/login/4
-      //   component:DetailsComponent
-      //   // resolve:{
-      //   //   //get data before loading component
-      //   // }
-      // },
       {
         path: 'all',
         component:DetailsComponent

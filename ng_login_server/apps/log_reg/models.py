@@ -59,5 +59,4 @@ class User(models.Model):
     objects = UserManager()
 
     def natural_key(self):
-        # return(f'{self.first_name} {self.last_name}')
         return ({'id':self.id, 'first_name':self.first_name, 'last_name':self.last_name})
