@@ -3,8 +3,6 @@
     <div class="row row-no-gutters">
         <div class="d-inline-block col-sm-4">
             <div class="col p-4"><h2>Registration</h2></div>
-            {{form.valid}}
-            {{ form.value | json}}
               <form (submit)='onSubmit($event, form)' #form="ngForm">
                   <div class="form-group row text-dark">
                         <div class="col-sm-4 text-left">

@@ -13,16 +13,11 @@ def index(request):
 def show(request,id):
     #show count playlist and song for show-song
     song = Song.objects.get(id=id)
-    # print("*"*50)
-    # print("test", test)
     result ={
         'song1' : serializers.serialize("json",[song], use_natural_foreign_keys=True),
         'playlist': serializers.serialize("json", song.playlist.all(), use_natural_foreign_keys=True),
         'count': serializers.serialize("json", Count.objects.filter(songcount=id),use_natural_foreign_keys=True)
     }
-    # data = serializers.serialize("json", Song.objects.filter(id=id), indent=2, use_natural_foreign_keys=True)
-    # data2 = serializers.serialize("json", Song.objects)
-    # print("data:", data)
     return HttpResponse(json.dumps(result), status=200,content_type="application/json")
 
 def showUser(request,id):
@@ -38,13 +33,8 @@ def showUser(request,id):
     return HttpResponse(json.dumps(result), status=200,content_type="application/json")
 
 def create(request):
-    # decode post data
-    # print('*'*50)
-    # print("is getting here")
     data = json.loads(request.body.decode())
     valid, result = Song.objects.validate(data)
-    # print("*"*50)
-    # print("valid: ", valid)
     if valid:
         song_info = Song.objects.easy_create(data)
         data = serializers.serialize("json", [song_info], indent=2, use_natural_foreign_keys=True)
@@ -55,7 +45,6 @@ def create(request):
 
 def addPlaylist(request):
     buttonData = json.loads(request.body.decode())
-    # buttonData = song_id,person_id
     songToAdd= Song.objects.get(id=buttonData['song_id'])
     userToPlaylist= User.objects.get(id=int(buttonData['person_id']))
     songToAdd.playlist.add(userToPlaylist)
@@ -69,5 +58,4 @@ def addPlaylist(request):
         Count.objects.create(songcount=songToAdd, usercount=userToPlaylist, count=1)
     songToAdd.total_times_added +=1
     songToAdd.save()
-    # print("songToAdd", songToAdd)
     return redirect('/')

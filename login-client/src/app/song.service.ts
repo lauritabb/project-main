@@ -29,11 +29,6 @@ export class SongService {
     return this.http.post<Song>(this.baseURL + '/playlist/', {song_id,person_id});
 
   }
-
-  // getCount(person_id):Observable<Count>{
-  //   console.log("SongService.ts, person_id:", person_id)
-  //   return 
-  // }
 }
 interface SongPlay {
   song1: string;
